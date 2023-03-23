@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
       sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
     },
     {
-      tag: 'NHL',
+      tag: 'DPWT',
       wins: 0,
       bonus: 0,
       skins: 0,
