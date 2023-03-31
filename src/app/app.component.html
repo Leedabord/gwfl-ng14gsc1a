@@ -23,21 +23,25 @@
         <mat-panel-description >
         <mat-chip-list>
         <mat-chip color="accent" selected>  {{ tt.wins }}   </mat-chip>
+        <mat-chip>  {{ tt.skins }}   </mat-chip>
+        <mat-chip>  {{ tt.bonus }}   </mat-chip>
         </mat-chip-list>
         </mat-panel-description>
       </mat-expansion-panel-header>
 
       <mat-grid-list cols="12" rowHeight="40px">
       <mat-grid-tile  [colspan]="4"  [rowspan]="1">
-        <span> &nbsp; </span>
+        <span>   </span>
       </mat-grid-tile>
       <mat-grid-tile  [colspan]="4"  [rowspan]="1">
-        <span> &nbsp; </span>
+        <span>   </span>
       </mat-grid-tile>
       <mat-grid-tile  [colspan]="4"  [rowspan]="1">
-      <button mat-raised-button  color="primary"  (click)="tempfn()">Post Score</button> 
-    </mat-grid-tile>
-    </mat-grid-list>
+        <!-- span>  
+        <button mat-raised-button  color="primary"  (click)="tempfn()">Post Score</button> 
+        </span -->
+      </mat-grid-tile>
+      </mat-grid-list>
       <hr> 
 
       <mat-grid-list cols="12" rowHeight="80px">
