@@ -149,5 +149,11 @@ export class AppComponent implements OnInit {
     for (let jj = 0; jj < 4; jj++) {
       this.Teams[jj].wins = this.Teams[jj].bonus + this.Teams[jj].skins;
     }
+
+    const object = { a: 1, b: 2, c: 3 };
+    for (const property in object) {
+      console.log(`${object[property]}`);
+    }
+
   } // end tempfn()
 }
