@@ -1,6 +1,7 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'my-app',
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
+  posts: any;
 
   public Teams = [
     { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
@@ -84,9 +86,14 @@ export class AppComponent implements OnInit {
     { name: 'Warn', color: 'warn' },
   ];
 
-  constructor(private httpC: HttpClient) {}
-
+  constructor(private service:DataService) {}
+    
   ngOnInit() {
+    this.service.rdbGet()
+      .subscribe(response => {
+        this.posts = response;
+        console.log(" ngOnInit - posts:: ", this.posts);
+      });
     this.tempfn();
   }
 
