@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   public dbRecs = [];
 
   public Teams = [
-    { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
+    { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0, 
+      gkey: '', lastMod: '',    
       hw: [false,false,false,false,false,false,false,false,false,
            false,false,false,false,false,false,false,false,false],
       hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
