@@ -6,11 +6,7 @@
   <p> </p>
 </nav>
 
-<div  *ngFor="let tt of posts.records" > 
-  {{ tt.id }} , {{ tt.fields | json }}
-</div>
-
-<div  *ngFor="let tt of Teams; let ii = index" > 
+<div  *ngFor="let tt of Teams; let ii = index" >  {{ tt.fields | json }}
 <mat-card>
 <mat-card-content>
 
@@ -25,9 +21,9 @@
 
         <mat-panel-description >
         <mat-chip-list>
-        <mat-chip color="accent" selected>  {{ tt.wins }}   </mat-chip>
-        <mat-chip>  {{ tt.skins }}   </mat-chip>
-        <mat-chip>  {{ tt.bonus }}   </mat-chip>
+        <mat-chip color="accent" selected>  {{ tt.fields.win$ }}   </mat-chip>
+        <mat-chip>  {{ tt.fields.win$ }}   </mat-chip>
+        <mat-chip>  {{ tt.fields.RecType }}   </mat-chip>
         </mat-chip-list>
         </mat-panel-description>
       </mat-expansion-panel-header>
