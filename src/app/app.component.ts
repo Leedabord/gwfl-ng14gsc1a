@@ -12,9 +12,9 @@ import { HelloComponent } from './hello.component';
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   posts: any;
-  public Teams = [];
+  public dbRecs = [];
 
-  public TeamsM = [
+  public Teams = [
     { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
       hw: [false,false,false,false,false,false,false,false,false,
            false,false,false,false,false,false,false,false,false],
@@ -93,13 +93,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.service.getAll()
       .subscribe(response => {
-        this.posts = response; this.Teams = this.posts.records;
+        this.posts = response;
         console.log(" ngOnInit - posts:: ", this.posts);
+        this.dbRecs = this.posts.records;    
       });
     this.tempfn();
   }
 
   tempfn() {
+    
     let skinpot = 0;
     let sf9 = 0;
 
