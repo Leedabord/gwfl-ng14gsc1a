@@ -6,6 +6,10 @@
   <p> </p>
 </nav>
 
+<div  *ngFor="let tt of posts.records; let ii = index" > 
+  {{ tt.id }} , {{ tt.fields | json }}
+</div>
+
 <div  *ngFor="let tt of Teams; let ii = index" > 
 <mat-card>
 <mat-card-content>

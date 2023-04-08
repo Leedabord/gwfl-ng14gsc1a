@@ -2,6 +2,7 @@ import { Component, OnInit, VERSION } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { HelloComponent } from './hello.component';
 
 @Component({
   selector: 'my-app',
