@@ -23,8 +23,8 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'api_key': 'key66fQg5IghIIQmb'  
-     // 'x-apikey': '5821f61550e9b39131fe1b6f'  
+    //  'api_key': 'key66fQg5IghIIQmb'  
+    // 'x-apikey': '5821f61550e9b39131fe1b6f'  
       // 569a2b87566759cf4b984a50'  // 5821f61550e9b39131fe1b6f
     })
   }
