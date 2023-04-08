@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   public Teams = [];
 
   public gscObj = 
-    { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0, 
-      gkey: '', lModh: '', lModt: '',
+    { team:'team', win$:0, sk:0, b1:0, b2:0, tr18:0, tsf9:0, tsb9:0, 
+      gkey:'', lModh:'', lModt:'',
       hw: [false,false,false,false,false,false,false,false,false,
            false,false,false,false,false,false,false,false,false],
       hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
