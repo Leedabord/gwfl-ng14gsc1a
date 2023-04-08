@@ -13,81 +13,18 @@ export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   posts: any;
   public dbRecs = [];
+  public Teams = [];
 
-  public Teams = [
+  public gscObj = 
     { tag: 'SCGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0, 
-      gkey: '', lMod: '',
+      gkey: '', lModh: '', lModt: '',
       hw: [false,false,false,false,false,false,false,false,false,
            false,false,false,false,false,false,false,false,false],
       hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
       sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'USGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'PGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'LIV', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'LPGA', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'LET', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'DPWT', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-           false,false,false,false,false,false,false,false,false],
-      hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-      sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    },
-    { tag: 'WGC', wins: 0, skins: 0, bonus: 0, tsr18: 0, tsf9: 0, tsb9: 0,     
-    gkey: '', lMod: '',
-    hw: [false,false,false,false,false,false,false,false,false,
-         false,false,false,false,false,false,false,false,false],
-    hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    sf9: [8, 8, 4, 8, 8, 8, 8, 8, 8],
-    sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-    }
-  ];
+    };
 
   public availableColors = [
     { name: 'none', color: '' },
@@ -113,7 +50,7 @@ export class AppComponent implements OnInit {
     for (let ii = 0; ii < this.dbRecs.length ; ii++) {
       let tagExists = false;
       for (let jj = 0; jj < this.Teams.length && !tagExists; jj++) {
-
+        // 
       }
 
     }
