@@ -6,7 +6,7 @@
   <p> </p>
 </nav>
 
-<div  *ngFor="let tt of posts.records; let ii = index" > 
+<div  *ngFor="let tt of posts.records" > 
   {{ tt.id }} , {{ tt.fields | json }}
 </div>
 

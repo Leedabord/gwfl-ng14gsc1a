@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
          false,false,false,false,false,false,false,false,false],
     hw1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     hw2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    sf9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
+    sf9: [8, 8, 4, 8, 8, 8, 8, 8, 8],
     sb9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
     }
   ];
