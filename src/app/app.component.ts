@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   public dbRecs = [];
   public Teams = [];
 
-  public gscObj = 
+  public teamObj = 
     { team:'team', win$:0, sk:0, b1:0, b2:0, tr18:0, tsf9:0, tsb9:0, 
       gkey:'', lModh:'', lModt:'',
       hw: [false,false,false,false,false,false,false,false,false,
@@ -50,9 +50,21 @@ export class AppComponent implements OnInit {
     for (let ii = 0; ii < this.dbRecs.length ; ii++) {
       let tagExists = false;
       for (let jj = 0; jj < this.Teams.length && !tagExists; jj++) {
-        // 
+        if (this.dbRecs[ii].fields.Team == this.Teams[jj].team) {
+          tagExists = true;
+          if (this.dbRecs[ii].fields.RecType == 'Hole') {
+            if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModh) {
+              // update this.Teams[jj] "Hole"
+            }
+          }
+          if (this.dbRecs[ii].RecType == 'Team') {
+            if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModt) {
+              // update this.Teams[jj] "Team"
+            }
+          }
+        }
       }
-
+      // push new Team  JSON.parse(JSON.stringify(teamObj));
     }
   }
 
