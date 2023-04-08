@@ -105,7 +105,18 @@ export class AppComponent implements OnInit {
         console.log(" ngOnInit - posts:: ", this.posts);
         this.dbRecs = this.posts.records;    
       });
+    this.mvFields();
     this.tempfn();
+  }
+
+  mvFields() {
+    for (let ii = 0; ii < this.dbRecs.length ; ii++) {
+      let tagExists = false;
+      for (let jj = 0; jj < this.Teams.length && !tagExists; jj++) {
+
+      }
+
+    }
   }
 
   tempfn() {
