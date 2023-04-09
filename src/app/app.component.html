@@ -5,7 +5,14 @@
   <hr>
   <p> </p>
 </nav>
+<hr> 
+
+<pre> {{ Teams | json }} </pre>
+
+<hr> 
+
 <pre> {{ dbRecs | json }} </pre>
+
 <div  *ngFor="let tt of Teams; let ii = index" >  {{ tt | json }}
 <mat-card>
 <mat-card-content>
@@ -28,6 +35,29 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
+      <mat-grid-list cols="12" rowHeight="80px">
+        <span  *ngFor="let xss of tt.f9; let jj = index" >  
+        <mat-grid-tile  [colspan]="4"  [rowspan]="1">
+        <mat-form-field  class="in30px">
+        <input  type="number"   [(ngModel)]="tt.f9[jj]"  matInput placeholder="h# {{jj+1}}" />
+        </mat-form-field>   
+        </mat-grid-tile>
+        </span> 
+        </mat-grid-list>
+        <hr> 
+  
+        <mat-grid-list cols="12" rowHeight="80px">
+        <span  *ngFor="let xss of tt.b9; let jj = index" >  
+        <mat-grid-tile  [colspan]="4"  [rowspan]="1">
+        <mat-form-field  class="in30px">
+        <input  type="number"   [(ngModel)]="tt.b9[jj]"  matInput placeholder="h# {{jj+10}}" />
+        </mat-form-field>   
+        </mat-grid-tile>
+        </span> 
+        </mat-grid-list>
+        <hr> 
+  
+  
         <!-- span>  
       <mat-grid-list cols="12" rowHeight="40px">
       <mat-grid-tile  [colspan]="4"  [rowspan]="1">
@@ -43,28 +73,6 @@
         </span -->
 
         <hr> 
-
-      <mat-grid-list cols="12" rowHeight="80px">
-      <span  *ngFor="let xss of tt.f9; let jj = index" >  
-      <mat-grid-tile  [colspan]="4"  [rowspan]="1">
-      <mat-form-field  class="in30px">
-      <input  type="number"   [(ngModel)]="tt.f9[jj]"  matInput placeholder="h# {{jj+1}}" />
-      </mat-form-field>   
-      </mat-grid-tile>
-      </span> 
-      </mat-grid-list>
-      <hr> 
-
-      <mat-grid-list cols="12" rowHeight="80px">
-      <span  *ngFor="let xss of tt.b9; let jj = index" >  
-      <mat-grid-tile  [colspan]="4"  [rowspan]="1">
-      <mat-form-field  class="in30px">
-      <input  type="number"   [(ngModel)]="tt.b9[jj]"  matInput placeholder="h# {{jj+10}}" />
-      </mat-form-field>   
-      </mat-grid-tile>
-      </span> 
-      </mat-grid-list>
-      <hr> 
 
       <p> {{ Teams | json }} </p>
 
