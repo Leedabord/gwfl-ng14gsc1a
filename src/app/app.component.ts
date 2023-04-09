@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   public teamObj = 
     { team:'', tw$:0, tsk:0, tb1:0, tb2:0, tr18:0, tf9:0, tb9:0, 
       gkey:'', lModh:'', lModt:'',
-      lMh: ['','','','','','','','','','','','','','','','','',''], 
+      lMh: [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], 
       w$: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       sk: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       b1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -105,7 +105,7 @@ export class AppComponent implements OnInit {
       for (jj = 0; jj < this.Teams.length && !tagExists; jj++) {
         if (this.dbRecs[ii].fields.Team == this.Teams[jj].team) {
           tagExists = true;
-          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.Teams[jj].team, " ? ", this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx], "<<", this.dbRecs[ii].fields.LastMod );
           if ((this.dbRecs[ii].fields.RecType == 'Hole') 
             && (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx])) {
               this.mvrtHole(ii, jj);
