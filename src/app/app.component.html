@@ -7,13 +7,16 @@
 </nav>
 <hr> 
 
-<pre> {{ Teams | json }} </pre>
+<div  *ngFor="let tt of Teams; let ii = index" > 
 
-<hr> 
+<!-- pre> {{ Teams | json }} </pre>
 
-<pre> {{ dbRecs | json }} </pre>
+<hr>  
+  <p> {{ Teams | json }} </p>
+ {{ tt | json }}
 
-<div  *ngFor="let tt of Teams; let ii = index" >  {{ tt | json }}
+<pre> {{ dbRecs | json }} </pre -->
+
 <mat-card>
 <mat-card-content>
 
@@ -73,8 +76,6 @@
         </span -->
 
         <hr> 
-
-      <p> {{ Teams | json }} </p>
 
 </mat-expansion-panel>
   </mat-accordion>
