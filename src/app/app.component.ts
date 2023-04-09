@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   public teamObj = 
     { team:'', tw$:0, tsk:0, tb1:0, tb2:0, tr18:0, tf9:0, tb9:0, 
       gkey:'', lModh:'', lModt:'',
-      lMh: [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '], 
+      lMh: ['','','','','','','','','','','','','','','','','','',],
       w$: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       sk: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       b1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -37,38 +37,34 @@ export class AppComponent implements OnInit {
   constructor(private service:DataService) {}
     
   ngOnInit() {
+    let ii = 0, jj = 0;
+
     this.service.getAll()
       .subscribe(response => {
         this.posts = response;
-//        console.log(" ngOnInit - posts:: ", this.posts);
         this.dbRecs = this.posts.records;    
         console.log(" ngOnInit - dbRecs:: ", this.dbRecs);
-        this.mvFields();
-//        this.tempfn();
-});
+        this.mvFields(ii, jj);
+        //        this.tempfn();
+      });
   }
 
   mvrtHole(ii: number, jj: number) {
-    console.log("mvrtHole:: ", this.dbRecs[ii].fields.hidx, " ", jj, "::", this.Teams[jj].team);
-    this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.LastMod;
-    this.Teams[jj].w$[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.win$;
-    this.Teams[jj].tw$ += this.dbRecs[ii].fields.win$;
-    this.Teams[jj].sk[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.Skins;
-    this.Teams[jj].tsk += this.dbRecs[ii].fields.Skins;
-    this.Teams[jj].b1[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.Bonus;
-    this.Teams[jj].tb1 += this.dbRecs[ii].fields.Bonus;
+    if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx]) {
+      console.log("mvrtHole::", this.dbRecs[ii].fields.hidx, " ", jj, "::", this.Teams[jj].team, this.dbRecs[ii].fields.LastMod);
+      this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.LastMod;
+      this.Teams[jj].w$[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.win$;
+      this.Teams[jj].tw$ += this.dbRecs[ii].fields.win$;
+      this.Teams[jj].sk[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.Skins;
+      this.Teams[jj].tsk += this.dbRecs[ii].fields.Skins;
+      this.Teams[jj].b1[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.Bonus;
+      this.Teams[jj].tb1 += this.dbRecs[ii].fields.Bonus;
+    }
   }
-/*              { team:'team', tw$:0, tsk:0, tb1:0, tb2:0, tr18:0, tsf9:0, tsb9:0, 
-              gkey:'', lModh:'', lModt:'',
-              w$: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              sk: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              b1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              b2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-              f9: [8, 8, 8, 8, 8, 8, 8, 8, 8],
-              b9: [8, 8, 8, 8, 8, 8, 8, 8, 8], */
 
   mvrtTeam(ii: number, jj: number) {
-    console.log("mvFields>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+    console.log("mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+    if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModt) {
     this.Teams[jj].lModt = this.dbRecs[ii].fields.LastMod;
     this.Teams[jj].f9[0] = this.dbRecs[ii].fields.h1;
     this.Teams[jj].f9[1] = this.dbRecs[ii].fields.h2;
@@ -88,50 +84,46 @@ export class AppComponent implements OnInit {
     this.Teams[jj].b9[6] = this.dbRecs[ii].fields.h16;
     this.Teams[jj].b9[7] = this.dbRecs[ii].fields.h17;
     this.Teams[jj].b9[8] = this.dbRecs[ii].fields.h18;
-    for (let kk = 0; kk < 9; kk++) {
-      this.Teams[jj].tf9 += this.Teams[jj].f9[kk];
-      console.log("Team::", this.Teams[jj].team, "  f9[", kk, "]:", this.Teams[jj].f9[kk]);
+      for (let kk = 0; kk < 9; kk++) {
+        this.Teams[jj].tf9 += this.Teams[jj].f9[kk];
+        // console.log("Team::", this.Teams[jj].team, "  f9[", kk, "]:", this.Teams[jj].f9[kk]);
+      }
+      for (let kk = 0; kk < 9; kk++) {
+       this.Teams[jj].tb9 += this.Teams[jj].b9[kk];
+      }
+      this.Teams[jj].tr18 = this.Teams[jj].tf9 + this.Teams[jj].tb9;
+      console.log(">> mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
     }
-    for (let kk = 0; kk < 9; kk++) {
-      this.Teams[jj].tb9 += this.Teams[jj].b9[kk];
-    }
-    this.Teams[jj].tr18 = this.Teams[jj].tf9 + this.Teams[jj].tb9;
   }
 
-  mvFields() {
-  let ii = 0, jj = 0;
+  mvFields(ii: number, jj: number) {
     for (ii = 0; ii < this.dbRecs.length ; ii++) {
       let tagExists = false;
       for (jj = 0; jj < this.Teams.length && !tagExists; jj++) {
         if (this.dbRecs[ii].fields.Team == this.Teams[jj].team) {
           tagExists = true;
-          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.Teams[jj].team, " ? ", this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx], "<<", this.dbRecs[ii].fields.LastMod );
-          if ((this.dbRecs[ii].fields.RecType == 'Hole') 
-            && (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx])) {
-              this.mvrtHole(ii, jj);
+          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.Teams[jj].team, " ? ", "<<", this.dbRecs[ii].fields.LastMod );
+          if (this.dbRecs[ii].fields.RecType == 'Hole') {
+            this.mvrtHole(ii, jj);
           }
-          if ((this.dbRecs[ii].RecType == 'Team') 
-            && (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModt)) {
-              this.mvrtTeam(ii, jj);
+          if (this.dbRecs[ii].fields.RecType == 'Team') { 
+            this.mvrtTeam(ii, jj);
           }
         }
       }  // for jj
       if (!tagExists) {
         jj = this.Teams.length;
         this.Teams.push(); 
- console.log("push Teams::", this.Teams, this.dbRecs[ii].fields.Team, jj);
-        console.log("PUSH >> mvFields>> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+   console.log("push Teams::", this.Teams, this.dbRecs[ii].fields.Team, jj);
         this.Teams[jj] = JSON.parse(JSON.stringify(this.teamObj));
         this.Teams[jj].team = this.dbRecs[ii].fields.Team;
+        if (this.dbRecs[ii].fields.RecType == 'Hole') {
+          this.mvrtHole(ii, jj);
+        }
+        if (this.dbRecs[ii].fields.RecType == 'Team') {
+          this.mvrtTeam(ii, jj);
+        }
       } // !tagExists
-    if ((this.dbRecs[ii].fields.RecType == 'Hole') 
-      && (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx])) {
-        this.mvrtHole(ii, jj);
-    }
-    if ((this.dbRecs[ii].RecType == 'Team') 
-      && (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModt)) {
-        this.mvrtTeam(ii, jj);
-    }
     }  // for ii
   }
 
