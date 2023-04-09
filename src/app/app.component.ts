@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
       .subscribe(response => {
         this.posts = response;
         this.dbRecs = this.posts.records;    
-        console.log(" ngOnInit - dbRecs:: ", this.dbRecs);
+//        console.log(" ngOnInit - dbRecs:: ", this.dbRecs);
         this.mvFields(ii, jj);
         //        this.tempfn();
       });
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
 
   mvrtHole(ii: number, jj: number) {
     if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx]) {
-      console.log("mvrtHole::", this.dbRecs[ii].fields.hidx, " ", jj, "::", this.Teams[jj].team, this.dbRecs[ii].fields.LastMod);
+//      console.log("mvrtHole::", this.dbRecs[ii].fields.hidx, " ", jj, "::", this.Teams[jj].team, this.dbRecs[ii].fields.LastMod);
       this.Teams[jj].lMh[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.LastMod;
       this.Teams[jj].w$[this.dbRecs[ii].fields.hidx] = this.dbRecs[ii].fields.win$;
       this.Teams[jj].tw$ += this.dbRecs[ii].fields.win$;
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
   }
 
   mvrtTeam(ii: number, jj: number) {
-    console.log("mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+//    console.log("mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
     if (this.dbRecs[ii].fields.LastMod > this.Teams[jj].lModt) {
     this.Teams[jj].lModt = this.dbRecs[ii].fields.LastMod;
     this.Teams[jj].f9[0] = this.dbRecs[ii].fields.h1;
@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
        this.Teams[jj].tb9 += this.Teams[jj].b9[kk];
       }
       this.Teams[jj].tr18 = this.Teams[jj].tf9 + this.Teams[jj].tb9;
-      console.log(">> mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
+//      console.log(">> mvrtTeam>> ", this.dbRecs[ii].fields.RecType, ":: ", this.dbRecs[ii].fields.Team, " ? ", this.dbRecs[ii].fields.LastMod);
     }
   }
 
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       for (jj = 0; jj < this.Teams.length && !tagExists; jj++) {
         if (this.dbRecs[ii].fields.Team == this.Teams[jj].team) {
           tagExists = true;
-          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.Teams[jj].team, " ? ", "<<", this.dbRecs[ii].fields.LastMod );
+//          console.log("tagExists >> ", jj, this.dbRecs[ii].fields.RecType, ":: ", this.Teams[jj].team, " ? ", "<<", this.dbRecs[ii].fields.LastMod );
           if (this.dbRecs[ii].fields.RecType == 'Hole') {
             this.mvrtHole(ii, jj);
           }
@@ -114,7 +114,7 @@ export class AppComponent implements OnInit {
       if (!tagExists) {
         jj = this.Teams.length;
         this.Teams.push(); 
-   console.log("push Teams::", this.Teams, this.dbRecs[ii].fields.Team, jj);
+//   console.log("push Teams::", this.Teams, this.dbRecs[ii].fields.Team, jj);
         this.Teams[jj] = JSON.parse(JSON.stringify(this.teamObj));
         this.Teams[jj].team = this.dbRecs[ii].fields.Team;
         if (this.dbRecs[ii].fields.RecType == 'Hole') {
@@ -186,11 +186,6 @@ export class AppComponent implements OnInit {
 
     for (let jj = 0; jj < 4; jj++) {
       this.Teams[jj].wins = this.Teams[jj].bonus + this.Teams[jj].skins;
-    }
-
-    const object = { a: 1, b: 2, c: 3 };
-    for (const property in object) {
-      console.log(`${object[property]}`);
     }
 
   } // end tempfn()
