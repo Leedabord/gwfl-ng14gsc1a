@@ -3,19 +3,13 @@
   src="https://media.istockphoto.com/vectors/vector-cartoon-of-happy-golf-ball-with-clubs-and-cart-vector-id486710150"  alt="Golf">    
   Social Golf Tribe - Skins Match 
   <hr>
-  <p> </p>
 </nav>
-<hr> 
-
-<div  *ngFor="let tt of Teams; let ii = index" > 
 
 <!-- pre> {{ Teams | json }} </pre>
+<pre> {{ dbRecs | json }} </pre>
+ -->
 
-<hr>  
-  <p> {{ Teams | json }} </p>
- {{ tt | json }}
-
-<pre> {{ dbRecs | json }} </pre -->
+<div  *ngFor="let tt of Teams; let ii = index" > 
 
 <mat-card>
 <mat-card-content>
@@ -74,8 +68,6 @@
       </mat-grid-tile>
       </mat-grid-list>
         </span -->
-
-        <hr> 
 
 </mat-expansion-panel>
   </mat-accordion>
