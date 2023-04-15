@@ -34,12 +34,12 @@ export class AppComponent implements OnInit {
     { name: 'Warn', color: 'warn' },
   ];
 
-  constructor(private service:DataService) {}
+  constructor(private datasvc:DataService) {}
     
   ngOnInit() {
     let ii = 0, jj = 0;
 
-    this.service.getAll()
+    this.datasvc.getAll()
       .subscribe(response => {
         this.posts = response;
         this.dbRecs = this.posts.records;    
