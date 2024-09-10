@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 export class DataService {
 
   readonly httpURL = 
-    'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/Scores?api_key=key66fQg5IghIIQmb';
-
+    'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/Scores/';
+ 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+         'Content-Type': 'application/json',
+         'Authorization': 'Bearer patgbCJgQnURgkXpI.f72c7c10a614e68e2ba92c6e7a437e64312719fe9ad7f7c38b05164dfe445a32'
+       })
   }
 
   constructor(private httpC: HttpClient) { }
