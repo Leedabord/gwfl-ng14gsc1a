@@ -189,4 +189,21 @@ export class AppComponent implements OnInit {
     }
 
   } // end tempfn()
+
+  /* 
+displayTeams();
+
+Teams.sort(function(a, b){return a.tf9 - b.tf9});
+displayTeams();
+
+function displayTeams() {
+  document.getElementById("demo").innerHTML =
+  Teams[0].team + " " + Teams[0].tf9  + " " + Teams[0].f9 + "<br>" +
+  Teams[1].team + " " + Teams[1].tf9  + " " + Teams[1].f9 + "<br>" +
+  Teams[2].team + " " + Teams[2].tf9  + " " + Teams[2].f9 + "<br>" +
+  Teams[3].team + " " + Teams[3].tf9  + " " + Teams[3].f9 + "<br>" +
+  Teams[4].team + " " + Teams[4].tf9  + " " + Teams[4].f9 + "<br>" +
+  Teams[5].team + " " + Teams[5].tf9  + " " + Teams[5].f9 
+}
+  */
 }
