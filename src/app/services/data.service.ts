@@ -13,7 +13,7 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
          'Content-Type': 'application/json',
-         'Authorization': 'Bearer patgbCJgQnURgkXpI.f72c7c10a614e68e2ba92c6e7a437e64312719fe9ad7f7c38b05164dfe445a32'
+         'Authorization': 'Bearer 251016:: patgbCJgQnURgkXpI.ff953c0a0c9a6bd81bdfeda28ec62a40613e0fb5c8d86d5cb089fb4688b0b219' 
        })
   }
 
