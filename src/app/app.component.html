@@ -35,15 +35,43 @@
       <mat-grid-list cols="12" rowHeight="80px">
         <span  *ngFor="let xss of tt.f9; let jj = index" >  
         <mat-grid-tile  [colspan]="4"  [rowspan]="1">
+          <mat-chip-list>
+            <mat-chip color="accent" selected>  {{ tt.tw$ }}   </mat-chip>
+            <mat-chip>  {{ tt.tr18 }}   </mat-chip>
+            <mat-chip>  {{ tt.lModh }}   </mat-chip>
+          </mat-chip-list>  
+        </mat-grid-tile>
+        </span> 
+      </mat-grid-list>
+      <hr> 
+  
+      <mat-grid-list cols="12" rowHeight="80px">
+        <span  *ngFor="let xss of tt.b9; let jj = index" >  
+          <mat-grid-tile  [colspan]="4"  [rowspan]="1">
+            <mat-chip-list>
+              <mat-chip color="accent" selected>  {{ tt.tw$ }}   </mat-chip>
+              <mat-chip>  {{ tt.tr18 }}   </mat-chip>
+              <mat-chip>  {{ tt.lModh }}   </mat-chip>
+            </mat-chip-list>  
+          </mat-grid-tile>
+        </span> 
+      </mat-grid-list>
+      <hr> 
+  
+        <!-- span>  
+
+      <mat-grid-list cols="12" rowHeight="80px">
+        <span  *ngFor="let xss of tt.f9; let jj = index" >  
+        <mat-grid-tile  [colspan]="4"  [rowspan]="1">
         <mat-form-field  class="in30px">
         <input  type="number"   [(ngModel)]="tt.f9[jj]"  matInput placeholder="h# {{jj+1}}" />
         </mat-form-field>   
         </mat-grid-tile>
         </span> 
-        </mat-grid-list>
-        <hr> 
+      </mat-grid-list>
+      <hr> 
   
-        <mat-grid-list cols="12" rowHeight="80px">
+      <mat-grid-list cols="12" rowHeight="80px">
         <span  *ngFor="let xss of tt.b9; let jj = index" >  
         <mat-grid-tile  [colspan]="4"  [rowspan]="1">
         <mat-form-field  class="in30px">
@@ -51,11 +79,10 @@
         </mat-form-field>   
         </mat-grid-tile>
         </span> 
-        </mat-grid-list>
-        <hr> 
-  
-  
-        <!-- span>  
+      </mat-grid-list>
+      <hr> 
+
+
       <mat-grid-list cols="12" rowHeight="40px">
       <mat-grid-tile  [colspan]="4"  [rowspan]="1">
         <span> &nbsp; </span>
